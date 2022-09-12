@@ -15,11 +15,13 @@ namespace SerilogAspNetCore.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("This is index page");
             return View();
         }
 
         public IActionResult Privacy()
         {
+            _logger.LogInformation("This is privacy page");
             return View();
         }
 

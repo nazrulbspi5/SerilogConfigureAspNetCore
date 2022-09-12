@@ -1,4 +1,17 @@
+using Serilog;
+using Serilog.Events;
+//using Serilog.AspNetCore;
+
 var builder = WebApplication.CreateBuilder(args);
+
+//Configure Serilog
+builder.Host.UseSerilog((ctx, lc) => lc
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .ReadFrom.Configuration(builder.Configuration));
+
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
